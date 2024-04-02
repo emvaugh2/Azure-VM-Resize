@@ -1,0 +1,20 @@
+**** PowerShell commands to Resize VMs ****
+
+
+**** Resizes VM0
+$labVM0 = Get-AzVM -ResourceGroupName 418-e4e5fada-use-powershell-to-resize-an-azure-vir -VMName labVM0
+$labVM0.HardwareProfile.VmSize 
+$labVM0.HardwareProfile.VmSize = "Standard_B1s"
+Update-AzVM -VM $labVM0 -ResourceGroupName 418-e4e5fada-use-powershell-to-resize-an-azure-vir
+
+**** Resizes VM1
+$labVM1 = Get-AzVM -ResourceGroupName 418-e4e5fada-use-powershell-to-resize-an-azure-vir -VMName labVM1
+$labVM1.HardwareProfile.VmSize = "Standard_DS1_v2"
+Update-AzVM -VM $labVM1 -ResourceGroupName 418-e4e5fada-use-powershell-to-resize-an-azure-vir
+
+**** Retrieves the metrics for VM0 or VM1
+az monitor metrics list --resource /subscriptions/0cfe2870-d256-4119-b0a3-16293ac11bdc/resourceGroups/418-e4e5fada-use-powershell-to-resize-an-azure-vir/providers/Microsoft.Compute/virtualMachines/labVM0
+
+
+Website URLs:
+https://www.veeam.com/blog/resize-azure-vm-powershell.html
